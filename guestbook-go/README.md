@@ -276,3 +276,18 @@ service/guestbook-nodeport exposed
 
 logdna-mbp:guestbook-go jon minikube$ minikube service guestbook-nodeport --url
 ```
+
+To add the required redis server supplied by a helm chart, you can run:
+
+```
+helm template server1 \
+            --disable-openapi-validation \
+            --set 'architecture=replication' \
+            --set 'auth.enabled=false' \
+            --set 'auth.sentinel=false' \
+            --namespace kuma-system \
+            --include-crds \
+            --no-hooks  bitnami/redis > /tmp/sever1.yaml
+
+kubectl apply -f /tmp/server1.yaml
+```

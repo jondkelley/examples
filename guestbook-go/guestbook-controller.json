@@ -19,10 +19,11 @@
             }
          },
          "spec":{
+            "securityContext": {"runAsUser": 11000},
             "containers":[
                {
                   "name":"guestbook",
-                  "image":"k8s.gcr.io/guestbook:v3",
+                  "image":"jondkelley/guestbook:v3",
                   "ports":[
                      {
                         "name":"http-server",

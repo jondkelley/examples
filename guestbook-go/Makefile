@@ -23,7 +23,7 @@ release: clean build push clean
 
 # builds a docker image that builds the app and packages it into a minimal docker image
 build:
-	docker build -t ${REGISTRY}/guestbook:${VERSION} .
+	DOCKER_BUILDKIT=0 docker build -t ${REGISTRY}/guestbook:${VERSION} .
 
 # push the image to an registry
 push:

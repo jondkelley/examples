@@ -15,6 +15,7 @@ If you are running a cluster in Google Container Engine (GKE), instead see the [
  * [Step Six: Create the guestbook service](#step-six)
  * [Step Seven: View the guestbook](#step-seven)
  * [Step Eight: Cleanup](#step-eight)
+ * [Addendum](#addendum)
 
 ### Step Zero: Prerequisites <a id="step-zero"></a>
 
@@ -266,6 +267,12 @@ Tip: To turn down your Kubernetes cluster, follow the corresponding instructions
 [Getting Started Guides](https://kubernetes.io/docs/getting-started-guides/) that you previously used to create your cluster.
 
 
-<!-- BEGIN MUNGE: GENERATED_ANALYTICS -->
-[![Analytics](https://kubernetes-site.appspot.com/UA-36037335-10/GitHub/examples/guestbook-go/README.md?pixel)]()
-<!-- END MUNGE: GENERATED_ANALYTICS -->
+### Addendum <a id="addendum"></a>
+
+Exposing the guestbook service under minikube
+```
+kubectl expose replicationcontroller  guestbook --name guestbook-nodeport --type=NodePort
+service/guestbook-nodeport exposed
+
+logdna-mbp:guestbook-go jon minikube$ minikube service guestbook-nodeport --url
+```

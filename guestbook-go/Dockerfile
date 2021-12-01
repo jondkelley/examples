@@ -20,11 +20,18 @@ WORKDIR /app
 ADD ./main.go .
 RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 
+RUN adduser --disabled-password --gecos '' --uid 11000 guestbook
+
+
 FROM scratch
+
+COPY --from=0 /etc/passwd /etc/passwd
+
 WORKDIR /app
 COPY --from=0 /app/main .
 COPY ./public/index.html public/index.html
 COPY ./public/script.js public/script.js
 COPY ./public/style.css public/style.css
+USER guestbook
 CMD ["/app/main"]
 EXPOSE 3000

@@ -23,7 +23,7 @@
             "containers":[
                {
                   "name":"guestbook",
-                  "image":"jondkelley/guestbook:v3",
+                  "image":"jondkelley/guestbook:v4",
                   "ports":[
                      {
                         "name":"http-server",
